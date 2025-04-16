@@ -6,6 +6,12 @@ app = Flask(__name__)
 
 app.secret_key = "s3cret"
 
+app.config.update(
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SECURE=True,       # Make sure you're using HTTPS
+    SESSION_COOKIE_SAMESITE='Lax'
+)
+
 
 def get_db():
     conn = sqlite3.connect("user_db")
