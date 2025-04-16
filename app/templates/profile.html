@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head><title>{{ user.username }}'s Profile</title></head>
+<body>
+<h2>{{ user.username }}</h2>
+<p>Display: {{ user.display|safe }}</p> <!-- intentionally unsafe -->
+{% if session['user_id'] == user['id'] or session['user_id'] == 1 %}
+<form method="POST">
+    <input name="display" placeholder="display" value="{{ user.display }}">
+    <button type="submit">Update</button>
+</form>
+{% endif %}
+<a href="/">Back</a>
+</body>
+</html>
