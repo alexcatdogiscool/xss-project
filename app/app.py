@@ -7,7 +7,6 @@ app = Flask(__name__)
 app.secret_key = "s3cret"
 
 app.config.update(
-    SESSION_COOKIE_HTTPONLY=True,
     SESSION_COOKIE_SECURE=True,       # Make sure you're using HTTPS
     SESSION_COOKIE_SAMESITE='Lax'
 )
@@ -61,4 +60,4 @@ def profile(user_id):
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, ssl_context=('cert.pem', 'key.pem'))
